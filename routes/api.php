@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('heroes', 'ApiController@getAllHeroes');
 Route::get('heroes/{id}', 'ApiController@getHeroe');
+Route::get('heroes/buscar/{name}','ApiController@buscarHeroes');
 Route::post('heroes', 'ApiController@createHeroe');
 Route::put('heroes/{id}', 'ApiController@updateHeroe');
 Route::delete('heroes/{id}', 'ApiController@deleteHeroe');

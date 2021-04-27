@@ -26,6 +26,20 @@ class ApiController extends Controller
         }
     }
 
+    public function buscarHeroes($name){
+        
+        // $heroes = Heroe::where('nombre', 'LIKE', "%$nombre%")->get();
+         if (Heroe::where('nombre', 'LIKE', "%$name%")->exists()){
+             $heroes = Heroe::where('nombre', 'LIKE', "%$name%")->get()->toJson(JSON_PRETTY_PRINT);
+             return response($heroes,200);
+         }  else {
+             return response()->json([
+                 "message"=>"Heroes not found"
+             ]);
+         }  
+
+    }
+
     public function createHeroe(Request $request){
 
         $heroe = new Heroe();
